@@ -6,12 +6,12 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TokenInterceptorService implements HttpInterceptor{
+export class TokenInterceptorService implements HttpInterceptor {
 
   constructor( private injector: Injector) { }
 
   intercept(req, next) {
-    const authService = this.injector.get(AuthService);
+    const authService = this.injector.get(AuthService); // inject Authservice
     const tokenizedReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${authService.getToken()}`

@@ -11,6 +11,6 @@ export class AppComponent {
 
 
 
-  constructor(private auth: AuthService) {}
+  constructor(public auth: AuthService) {}
 }
 
