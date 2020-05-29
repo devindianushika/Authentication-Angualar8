@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>User List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+          <th>Email</th>
+          <th>Password</th>
+
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userdata of userService.user; index as index">
+          <td>{{userService.user[index].email}}</td>
+          <td>{{userService.user[index].password}}</td>
+
+          <td><button  class="btn btn-danger">Delete</button>
+              <button class="btn btn-info" style="margin-left: 10px">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

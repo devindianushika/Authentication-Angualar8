@@ -5,6 +5,9 @@ import { SpecialEventsComponent } from './components/special-events/special-even
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './auth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { ListComponent } from './components/list/list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full' },
@@ -13,6 +16,9 @@ const routes: Routes = [
   canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
+  {path: 'list', component: UserListComponent},
+  // {path: 'newlist', component: ListComponent}
 ];
 
 @NgModule({

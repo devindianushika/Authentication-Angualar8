@@ -1,0 +1,40 @@
+<!-- <table border="2" style="width: 90%;margin: 5%;">
+
+<tr style="text-align: center; background-color: lightblue;padding: 5px;">
+<td>Email</td>
+<td>Password</td></tr>
+<tr style="padding: 5px;" *ngFor= "let userdata of userService.user; index as index">
+<td style="text-align: center;">{{userService.user[index].email}}</td>
+<td style="text-align: center;">{{userService.user[index].password}}</td>
+</tr>
+</table> -->
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>User List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+
+            <th>Email</th>
+            <th>Password</th>
+
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let userdata of userService.user; index as index">
+            <td>{{userService.user[index].email}}</td>
+            <td>{{userService.user[index].password}}</td>
+
+            <td><button  class="btn btn-danger">Delete</button>
+                <button class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
