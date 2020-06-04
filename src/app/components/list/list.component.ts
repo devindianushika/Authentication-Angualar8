@@ -9,7 +9,7 @@ import { element } from 'protractor';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
     this.getUser();
