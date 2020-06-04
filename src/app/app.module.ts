@@ -16,6 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserService } from './services/user.service';
 import { ListComponent } from './components/list/list.component';
+import { TestComponent } from './components/test/test.component';
 
 
 
@@ -29,7 +30,8 @@ import { ListComponent } from './components/list/list.component';
     SpecialEventsComponent,
     ProfileComponent,
     UserListComponent,
-    ListComponent
+    ListComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

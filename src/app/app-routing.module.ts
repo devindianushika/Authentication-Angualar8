@@ -8,7 +8,7 @@ import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { ListComponent } from './components/list/list.component';
-
+import { TestComponent } from './components/test/test.component';
 const routes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   { path: 'events', component: EventsComponent },
@@ -17,8 +17,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  {path: 'list', component: UserListComponent},
+  {path: 'list', component: UserListComponent,
+  canActivate: [AuthGuard]},
   // {path: 'newlist', component: ListComponent}
+  { path: 'test', component: TestComponent},
 ];
 
 @NgModule({

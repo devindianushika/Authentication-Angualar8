@@ -1,6 +1,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>User List</h2>
+  <h3>{{errorMsg}}</h3>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
@@ -14,11 +15,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let userdata of userService.user; index as index">
-          <td>{{userService.user[index].email}}</td>
-          <td>{{userService.user[index].password}}</td>
+        <tr *ngFor="let userdata of userService.user">
+          <td>{{userdata.email}}</td>
+          <td>{{userdata.password}}</td>
 
-          <td><button  class="btn btn-danger">Delete</button>
+          <td><button (click)="deleteuser(userdata.id)" class="btn btn-danger">Delete</button>
               <button class="btn btn-info" style="margin-left: 10px">Details</button>
           </td>
         </tr>

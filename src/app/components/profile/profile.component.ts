@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { User } from '../../models/user.model';
+import { Userfields } from '../../userfields';
 
 
 @Component({
@@ -12,21 +12,34 @@ import { User } from '../../models/user.model';
 export class ProfileComponent implements OnInit {
 
 
-  id: number;
-  user: User[];
-
+  id: any;
+    user: Userfields;
+  public errorMsg;
   constructor(private route: ActivatedRoute, private router: Router,
-              private userService: UserService) { }
+              public userService: UserService) { }
 
   ngOnInit() {
-  //   // this.user = new User();
+   
+  }
+
+
+  // getOne() {
+  //   //  this.user = new Userfields();
   //   this.id = this.route.snapshot.params['id'];
   //   this.userService.getUser(this.id)
-  //     .subscribe(data => {
-  //       console.log(data);
-  //       this.user = data;
-  //     }, error => console.log(error));
+  //     .subscribe
+  //     (data => this.userService.user = data,
+  //       error => this.errorMsg = error,
+  //     );
+
+
+  //   console.log(this.id);
   // }
+  //   this.userService.user = data;
+  // }, error => console.log(error));
+
+
+
 
 
   // list() {
@@ -34,4 +47,16 @@ export class ProfileComponent implements OnInit {
   // }
 
 
-}}
+// getOne() {
+//   this.route.params.subscribe(params => {
+//     const id = params['id'];
+//     this.userService.getUser(id)
+//     .subscribe(user => {
+//       console.log(user);
+//     });
+
+//   });
+// }
+
+
+}

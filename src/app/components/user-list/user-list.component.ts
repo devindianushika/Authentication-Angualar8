@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { User } from '../../models/user.model';
+import { Userfields } from '../../userfields';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -14,43 +14,59 @@ import { element } from 'protractor';
 export class UserListComponent implements OnInit {
   // users: Observable<User[]>;
   // public userList: User[] = [];
-  // public errMessage;
+  public errorMsg;
+  // public user: Userfields[] = [];
 
-  constructor(private userService: UserService,
-              private router: Router) { }
+
+  constructor(public userService: UserService,
+    private router: Router) { }
 
   ngOnInit() {
     this.fetchUser();
   }
 
+  // fetchUser() {
+  // this.userService.getUserList()
+
+  //   .subscribe(data => {
+  //     data.forEach(element => {
+  //       this.userService.user.push(new Userfields(element));
+  //       console.log(element);
+
+
+
+  //     });
+  //   });
+
   fetchUser() {
-  this.userService.getUserList()
+    this.userService.getUserList()
+      .subscribe(
+        data => this.userService.user = data,
 
-    .subscribe(data => {
-      data.forEach(element => {
-        this.userService.user.push(new User(element));
-        console.log(element);
+        error => this.errorMsg = error,
+        //  console.log(data);
 
-
-
-      });
-    });
-}
-
-
-
-}
-
-
-export class User {
-
-  // id: number;
-  public email: string;
-  public password: string;
-
-
-  constructor(data: any) {
-    this.email = data.email;
-    this.password = data.password;
+      );
   }
-}
+
+
+  }
+
+
+
+//   deleteuser(id: any) {
+//     this.userService.deleteUser(id)
+//       .subscribe(
+//         data => {
+//           console.log(data);
+//           this.fetchUser();
+//         },
+//         error => console.log(error));
+
+//   }
+// }
+
+
+
+
+

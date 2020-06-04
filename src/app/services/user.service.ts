@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-// import { map } from 'rxjs/operators';
-// import { Observable } from 'rxjs';
-import {User} from '../models/user.model';
+import { Userfields } from '../userfields';
 // import { Router } from '@angular/router';
-// import 'rxjs/add/operator/catch';
-// import 'rxjs/add/observable/throw';
 import { throwError as observableThrowError, Observable } from 'rxjs';
-
+import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 
 
@@ -18,36 +14,56 @@ export class UserService {
 
 
   private getUserUrl = 'http://localhost:3000/api/getuser';
-  private getUserByIdUrl = 'http://localhost:3000/api/{id}';
+  private getUserByIdUrl = 'http://localhost:3000/api';
+  private deleteUserUrl = 'http://localhost:3000/api/delete/{id}';
 
-  constructor(private http: HttpClient        ) { }
+  constructor(private http: HttpClient) { }
 
-public user: User[] = [];
+  public user: Userfields[] = [];
 
 
-//   getUserList(): Observable<User[]> {
+  getUserList(): Observable<Userfields[]> {
 
-//     return this.http.get<User[]>(`${this.getUserUrl}`)
-//     .pipe(
-//    catchError(this.errorHandler)
-//    );
+    return this.http.get<Userfields[]>(`${this.getUserUrl}`)
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return observableThrowError(error.message || 'server error');
+  }
+
+
+
+
+
+
+
+
+
+
+
+  // getUser(id) {
+  //   return this.http.get<Userfields[]>('http://localhost:3000/api/' + id).pipe(map(res => {
+  //   console.log(res);
+  //   }));
+
+  // }
+
+
+//   getUser(id: any): Observable<Userfields> {
+//     return this.http.get<Userfields>('http://localhost:3000/api/' + id);
+//     // .pipe(
+//     //   catchError(this.errorHandler)
+//     // );
 //   }
 
-//   errorHandler(error: HttpErrorResponse) {
-// return observableThrowError (error.message || 'server error');
+
+//   deleteUser(id: any) {
+//     return this.http.delete<any>('http://localhost:3000/api/delete/' + id);
 //   }
 
-
-//   getUser(id: number): Observable<User[]> {
-//     return this.http.get<User[]>(`${this.getUserByIdUrl}/${id}`)
-//     .pipe(
-//       catchError(this.errorHandler)
-//       );
-//      }
-
-
-getUserList() {
-return this.http.get<any>(this.getUserUrl);
-}
+// }
 
 }
